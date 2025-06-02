@@ -61,6 +61,12 @@ public class Simulador
         visao = new VisaoDeGrafico(800, 400, 500);
         GeradorDePopulacoes.definirCores(visao);
         visoes.add(visao);
+
+        //Passo 1 
+
+        VisaoSimulador visaoTexto = new VisaoDeTexto();
+        visoes.add(visaoTexto);
+
         
         // Configura um ponto de partida válido.
         reiniciar();
