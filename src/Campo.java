@@ -201,4 +201,11 @@ public class Campo
     {
         return largura;
     }
+
+
+    public Localizacao localizacaoAleatoria() {
+        int linha = rand.nextInt(comprimento);
+        int coluna = rand.nextInt(largura);
+        return new Localizacao(linha, coluna);
+    }
 }
