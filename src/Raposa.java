@@ -66,7 +66,7 @@ public class Raposa extends Animal
      * @param novasRaposas Uma lista para retornar as raposas recém-nascidas.
      */
     @Override
-    public void agir(List<Animal> novasRaposas)
+    public void agir(List<Ator> novasRaposas)
     {
         incrementarIdade();
         incrementarFome();

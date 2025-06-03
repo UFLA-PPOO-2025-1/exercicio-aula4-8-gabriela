@@ -45,7 +45,7 @@ public class Coelho extends Animal
      * @param novosCoelhos Uma lista para retornar os coelhos recém-nascidos.
      */
     @Override
-    public void agir(List<Animal> novosCoelhos)
+    public void agir(List<Ator> novosCoelhos)
     {
         incrementarIdade();
         if(estaVivo()) {

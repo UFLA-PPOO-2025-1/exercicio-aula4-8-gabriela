@@ -19,7 +19,7 @@ public class Simulador
     private static final int COMPRIMENTO_PADRAO = 80;
 
     // Lista de animais no campo.
-    private List<Animal> animais;
+    private List<Ator> atores;
     // O estado atual do campo.
     private Campo campo;
     // O passo atual da simulação.
@@ -49,7 +49,7 @@ public class Simulador
             largura = LARGURA_PADRAO;
         }
         
-        animais = new ArrayList<>();
+        atores = new ArrayList<>();
         campo = new Campo(comprimento, largura);
 
         visoes = new ArrayList<>();
@@ -61,6 +61,12 @@ public class Simulador
         visao = new VisaoDeGrafico(800, 400, 500);
         GeradorDePopulacoes.definirCores(visao);
         visoes.add(visao);
+
+        //Passo 1 
+
+        VisaoSimulador visaoTexto = new VisaoDeTexto();
+        visoes.add(visaoTexto);
+
         
         // Configura um ponto de partida válido.
         reiniciar();
@@ -101,18 +107,18 @@ public class Simulador
         passo++;
 
         // Fornece espaço para os animais recém-nascidos.
-        List<Animal> novosAnimais = new ArrayList<>(); 
+        List<Ator> novosAnimais = new ArrayList<>(); 
         // Permite que todos os ns ajam.
-        for(Iterator<Animal> it = animais.iterator(); it.hasNext(); ) {
-            Animal animal = it.next();
-            animal.agir(novosAnimais);
-            if(!animal.estaVivo()) {
+        for(Iterator<Ator> it = atores.iterator(); it.hasNext(); ) {
+            Ator ator = it.next();
+            ator.agir(novosAnimais);
+            if(!ator.estaAtivo()) {
                 it.remove();
             }
         }
         
         // Adiciona os animais recém-nascidos às listas principais.
-        animais.addAll(novosAnimais);
+        atores.addAll(novosAnimais);
 
         atualizarVisoes();
     }
@@ -123,12 +129,12 @@ public class Simulador
     public void reiniciar()
     {
         passo = 0;
-        animais.clear();
+        atores.clear();
         for (VisaoSimulador visao : visoes) {
             visao.reiniciar();
         }
 
-        GeradorDePopulacoes.povoar(campo, animais);
+        GeradorDePopulacoes.povoar(campo, atores);
         
         atualizarVisoes();
         reabilitarOpcoesVisoes();
