@@ -19,7 +19,7 @@ public class Campo
     // O comprimento e a largura do campo.
     private int comprimento, largura;
     // Armazenamento para os animais.
-    private Object[][] campo;
+    private Ator[][] campo;
 
     /**
      * Representa um campo com as dimensões fornecidas.
@@ -30,7 +30,7 @@ public class Campo
     {
         this.comprimento = comprimento;
         this.largura = largura;
-        campo = new Object[comprimento][largura];
+        campo = new Ator[comprimento][largura];
     }
     
     /**
@@ -61,7 +61,7 @@ public class Campo
      * @param linha Coordenada da linha da localização.
      * @param coluna Coordenada da coluna da localização.
      */
-    public void colocar(Object animal, int linha, int coluna)
+    public void colocar(Ator animal, int linha, int coluna)
     {
         colocar(animal, new Localizacao(linha, coluna));
     }
@@ -72,7 +72,7 @@ public class Campo
      * @param animal O animal a ser colocado.
      * @param localizacao Onde colocar o animal.
      */
-    public void colocar(Object animal, Localizacao localizacao)
+    public void colocar(Ator animal, Localizacao localizacao)
     {
         campo[localizacao.obterLinha()][localizacao.obterColuna()] = animal;
     }
@@ -82,7 +82,7 @@ public class Campo
      * @param localizacao Onde no campo.
      * @return O animal na localização fornecida, ou null se não houver nenhum.
      */
-    public Object obterObjetoEm(Localizacao localizacao)
+    public Ator obterObjetoEm(Localizacao localizacao)
     {
         return obterObjetoEm(localizacao.obterLinha(), localizacao.obterColuna());
     }
@@ -93,7 +93,7 @@ public class Campo
      * @param coluna A coluna desejada.
      * @return O animal na localização fornecida, ou null se não houver nenhum.
      */
-    public Object obterObjetoEm(int linha, int coluna)
+    public Ator obterObjetoEm(int linha, int coluna)
     {
         return campo[linha][coluna];
     }
